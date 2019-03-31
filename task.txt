@@ -1,0 +1,41 @@
+main page
+start
+how to play
+description
+credits
+
+//
+
+game title:
+category: word game
+features:
+mechanics/ how to play
+
+gameplay:
+	pause
+	exit
+	restart
+
+hardcopy:
+	longbond printed
+	frontpage
+		name of the game
+		group #
+		category
+		group members
+
+	ooa
+	uml class diagram
+	codes 2 column
+	screenshots of every feature
+	interface 2 image per page
+
+softcopy:
+	1dvd per section
+	each group have one folder
+	
+	folder name: group # gamename
+		source files
+		java app jar with icon
+		exe file
+		videos of gameplay 1min per person
