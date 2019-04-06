@@ -1,5 +1,6 @@
 package com.stringhunt.states;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import com.stringhunt.Handler;
@@ -29,6 +30,10 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics g) {
+	g.setColor(Color.black);
+	g.fillRect(0, 0, 800, 225);
+	g.setColor(Color.BLUE);
+	g.fillRect(0, 225, 800, 225);
 	player.render(g);
 	
     }
