@@ -92,17 +92,9 @@ public class Game implements Runnable{
 	
 	g.clearRect(0, 0, width, height);
 	
-	
-	//draw here--------------------------------
-	
-	//g.drawImage(Assets.spriteName, xpos, ypos, null);
-	//g.drawImage(Assets.img1,x,50 ,null);
-	
 	if(State.getState() != null) {
 	    State.getState().render(g);
 	}
-	
-	//end drawing------------------------------
 	
 	bs.show();
 	g.dispose();
@@ -120,7 +112,7 @@ public class Game implements Runnable{
 	long now;
 	long lastTime = System.nanoTime();
 	long timer = 0;
-	//int ticks = 0;
+	int ticks = 0;
 	
 	while(running) {
 	    
@@ -132,13 +124,13 @@ public class Game implements Runnable{
 	    if (delta >= 1) {
 		tick();
 		render();
-		//ticks++;
+		ticks++;
 		delta--;
 	    }
 	    
 	    if(timer >= 100000000) {
 		//System.out.println("Ticks and Frames: " + ticks);
-		//ticks = 0;
+		ticks = 0;
 		timer = 0;
 	    }
 	    
@@ -178,7 +170,6 @@ public class Game implements Runnable{
 	try {
 	    thread.join();
 	} catch (InterruptedException e) {
-	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}
     }
