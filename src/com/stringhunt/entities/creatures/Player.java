@@ -3,15 +3,15 @@ package com.stringhunt.entities.creatures;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import com.stringhunt.Game;
+import com.stringhunt.Handler;
 
 public class Player extends Creature {
     
-    private Game game;
+    private Handler handler;
 
-    public Player(Game game, float x, float y, int width, int height) {
+    public Player(Handler handler, float x, float y, int width, int height) {
 	super(x, y, width, height);
-	this.game = game;
+	this.handler = handler;
     }
 
     @Override
@@ -19,13 +19,13 @@ public class Player extends Creature {
 	
 	//temp movement test
 	
-	if(game.getKeyManager().up)
+	if(handler.getKeyManager().up)
 	    y -= 3;
-	if(game.getKeyManager().down)
+	if(handler.getKeyManager().down)
 	    y += 3;
-	if(game.getKeyManager().left)
+	if(handler.getKeyManager().left)
 	    x -= 3;
-	if(game.getKeyManager().right)
+	if(handler.getKeyManager().right)
 	    x += 3;
 	
     }
