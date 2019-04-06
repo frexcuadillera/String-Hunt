@@ -14,7 +14,6 @@ public class PausePanel extends Entity {
     
     public PausePanel(float x, float y, int width, int height) {
 	super(x, y, width, height);
-	this.handler = handler;
     }
 
     @Override
