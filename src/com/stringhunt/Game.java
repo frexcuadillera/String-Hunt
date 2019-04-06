@@ -5,10 +5,8 @@ import java.awt.image.BufferStrategy;
 
 import com.stringhunt.display.Display;
 import com.stringhunt.gfx.Assets;
-import com.stringhunt.input.KeyManager;
-import com.stringhunt.states.GameState;
-import com.stringhunt.states.MenuState;
-import com.stringhunt.states.State;
+import com.stringhunt.input.*;
+import com.stringhunt.states.*;
 
 public class Game implements Runnable{
 
@@ -18,22 +16,30 @@ public class Game implements Runnable{
     
     private boolean running = false;
     private Thread thread;
+    private Handler handler;
     
     private BufferStrategy bs;
     private Graphics g;
     
     //States
-    private State gameState;
-    private State menuState;
+    public State gameState;
+    public State menuState;
+    public State descriptionState;
+    public State tutorialState;
+    public State creditsState;
     
     //input
     private KeyManager keyManager;
-      
+    private MouseManager mouseManager;
+     
+    
+    //game constructor
     public Game(String title, int width, int height) {
 	this.width = width;
 	this.height = height;
 	this.title = title;
 	keyManager = new KeyManager();
+	mouseManager = new MouseManager();
 	
     }
     
@@ -41,16 +47,27 @@ public class Game implements Runnable{
     private void init() {
 	display = new Display(title, width, height);
 	display.getFrame().addKeyListener(keyManager);
+	display.getFrame().addMouseListener(mouseManager);
+	display.getFrame().addMouseMotionListener(mouseManager);
+	display.getCanvas().addMouseListener(mouseManager);
+	display.getCanvas().addMouseMotionListener(mouseManager);
 	Assets.init();
 	
-	//initialize states
-	gameState = new GameState(this);
-	menuState = new MenuState(this);
+	handler = new Handler(this);
 	
-	//set init state
+	//initialize states
+	gameState = new GameState(handler);
+	menuState = new MenuState(handler);
+	descriptionState = new DescriptionState(handler);
+	tutorialState = new TutorialState(handler);
+	creditsState = new CreditsState(handler);
+	
+	//set menu as state on startup
 	State.setState(menuState);
 	
     }
+    
+    //tick and render
     
     private void tick() {
 	keyManager.tick();
@@ -91,6 +108,8 @@ public class Game implements Runnable{
 	g.dispose();
     }
     
+    //game loop------------------------------
+    
     public void run() {
 	
 	init();
@@ -101,7 +120,7 @@ public class Game implements Runnable{
 	long now;
 	long lastTime = System.nanoTime();
 	long timer = 0;
-	int ticks = 0;
+	//int ticks = 0;
 	
 	while(running) {
 	    
@@ -113,13 +132,13 @@ public class Game implements Runnable{
 	    if (delta >= 1) {
 		tick();
 		render();
-		ticks++;
+		//ticks++;
 		delta--;
 	    }
 	    
 	    if(timer >= 100000000) {
 		//System.out.println("Ticks and Frames: " + ticks);
-		ticks = 0;
+		//ticks = 0;
 		timer = 0;
 	    }
 	    
@@ -128,10 +147,17 @@ public class Game implements Runnable{
 	stop();
     }
     
+    // input manager------------------------------
+    
     public KeyManager getKeyManager() {
 	return keyManager;
     }
     
+    public MouseManager getMouseManager() {
+	return mouseManager;
+    }
+    
+    //threading----------------------------------
     
     public synchronized void start() {
 	if(running) {
