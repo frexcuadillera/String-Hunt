@@ -2,7 +2,7 @@ package com.stringhunt.states;
 
 import java.awt.Graphics;
 
-import com.stringhunt.Game;
+import com.stringhunt.Handler;
 
 public abstract class State {
     
@@ -21,12 +21,12 @@ public abstract class State {
     //#14
     //add
     
-    protected Game game;
+    protected Handler handler;
     
     
     
-    public State(Game game) {
-	this.game = game;
+    public State(Handler handler) {
+	this.handler = handler;
     }
        
     //abstract methods
