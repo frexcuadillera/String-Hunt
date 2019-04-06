@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import com.stringhunt.Handler;
+import com.stringhunt.gfx.Assets;
 
 public class Player extends Creature {
     
@@ -33,10 +34,11 @@ public class Player extends Creature {
     @Override
     public void render(Graphics g) {
 	
-	//g.drawImage(Assets.player, 50, 50, null);
+	g.setColor(Color.GRAY);
 	
 	//test player movement around screen
-	g.setColor(Color.BLACK);
+	//g.setColor(Color.BLACK);
+	
 	g.fillRect((int)x, (int) y, 50, 50);
 	
     }    
