@@ -4,97 +4,92 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-public class MouseManager implements MouseListener, MouseMotionListener{
-    
-    private boolean leftPressed, rightPressed;
-    private int mouseX, mouseY;
-    
-    
-    public MouseManager() {
+import com.stringhunt.ui.UIManager;
+
+public class MouseManager implements MouseListener, MouseMotionListener {
+
+	private boolean leftPressed, rightPressed;
+	private int mouseX, mouseY;
+	private UIManager uiManager;
 	
-    }
-    
-    // getters
-    
-    public boolean isLeftPressed() {
-        return leftPressed;
-    }
-
-    public boolean isRightPressed() {
-        return rightPressed;
-    }
-
-    public int getMouseX() {
-        return mouseX;
-    }
-
-    public int getMouseY() {
-        return mouseY;
-    }
-
-    // imeplemented methods
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-	
-	if(e.getButton() == MouseEvent.BUTTON1) {
-	    leftPressed = true;
+	public MouseManager(){
+		
 	}
 	
-	if(e.getButton() == MouseEvent.BUTTON3) {
-	    rightPressed = true;
+	public void setUIManager(UIManager uiManager){
+		this.uiManager = uiManager;
 	}
 	
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
+	// Getters
 	
-	if(e.getButton() == MouseEvent.BUTTON1) {
-	    leftPressed = false;
+	public boolean isLeftPressed(){
+		return leftPressed;
 	}
 	
-	if(e.getButton() == MouseEvent.BUTTON3) {
-	    rightPressed = false;
+	public boolean isRightPressed(){
+		return rightPressed;
 	}
 	
-    }
+	public int getMouseX(){
+		return mouseX;
+	}
+	
+	public int getMouseY(){
+		return mouseY;
+	}
+	
+	// Implemented methods
+	
+	@Override
+	public void mousePressed(MouseEvent e) {
+		if(e.getButton() == MouseEvent.BUTTON1)
+			leftPressed = true;
+		else if(e.getButton() == MouseEvent.BUTTON3)
+			rightPressed = true;
+	}
 
-    @Override
-    public void mouseMoved(MouseEvent e) {
-	
-	mouseX = e.getX();
-	mouseY = e.getY();
-	
-    }
-    
-    @Override
-    public void mouseDragged(MouseEvent e) {
-	// TODO Auto-generated method stub
-	
-    }
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		if(e.getButton() == MouseEvent.BUTTON1)
+			leftPressed = false;
+		else if(e.getButton() == MouseEvent.BUTTON3)
+			rightPressed = false;
+		
+		if(uiManager != null)
+			uiManager.onMouseRelease(e);
+	}
 
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		mouseX = e.getX();
+		mouseY = e.getY();
+		
+		if(uiManager != null)
+			uiManager.onMouseMove(e);
+	}
+	
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-	
-	// pressed and released
-	
-    }
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    @Override
-    public void mouseEntered(MouseEvent e) {
-	
-	// entered a component
-	
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-	
-	// exited a component
-	
-    }
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
