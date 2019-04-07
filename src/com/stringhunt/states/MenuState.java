@@ -1,6 +1,5 @@
 package com.stringhunt.states;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
 import com.stringhunt.Handler;
