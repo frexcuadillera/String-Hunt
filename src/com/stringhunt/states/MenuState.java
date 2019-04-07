@@ -4,65 +4,58 @@ import java.awt.Graphics;
 
 import com.stringhunt.Handler;
 import com.stringhunt.gfx.Assets;
-import com.stringhunt.ui.ClickListener;
-import com.stringhunt.ui.UIImageButton;
-import com.stringhunt.ui.UIManager;
+import com.stringhunt.ui.UIEvent;
 
 public class MenuState extends State {
     
-    private UIManager uiManager;
-    private final float X_POSITION = 300;
-    private final float Y_POSITION = 120;
-    private final float Y_OFFSET = 60;
+    private final int X_POSITION = 300;
+    private final int Y_POSITION = 120;
+    private final int width = 200;
+    private final int height = 50;
+    private final int Y_OFFSET = 60;
+    private int[] hovering = {0,0,0,0};
     
-    public MenuState(Handler handler) {
+    private UIEvent uiEvent;
+    
+    public MenuState(final Handler handler) {
 	super(handler);
-	uiManager = new UIManager(handler);
-	handler.getMouseManager().setUIManager(uiManager);
-		
-	uiManager.addObject(new UIImageButton(X_POSITION, Y_POSITION, 200, 50, Assets.btn_start, new ClickListener() {	    
-	    @Override
-	    public void onClick() {
-		State.setState(handler.getGame().gameState);
-	    }
-	    
-	}));
 	
-	uiManager.addObject(new UIImageButton(X_POSITION, Y_POSITION + Y_OFFSET, 200, 50, Assets.btn_tutorial, new ClickListener() {	    
-	    @Override
-	    public void onClick() {
-		State.setState(handler.getGame().tutorialState);
-	    }
-	    
-	}));
-	
-	uiManager.addObject(new UIImageButton(X_POSITION, Y_POSITION + (Y_OFFSET * 2), 200, 50, Assets.btn_credits, new ClickListener() {	    
-	    @Override
-	    public void onClick() {
-		State.setState(handler.getGame().creditsState);
-	    }
-	    
-	}));
-	
-	uiManager.addObject(new UIImageButton(X_POSITION, Y_POSITION + (Y_OFFSET * 3), 200, 50, Assets.btn_quit, new ClickListener() {	    
-	    @Override
-	    public void onClick() {
-		System.out.println("Quit button pressed");
-	    }
-	    
-	}));
-	
+	uiEvent = new UIEvent(handler);
     }
+    
+
 
     @Override
-    public void tick() {
-	uiManager.tick();
+    public void tick() {	
+	hovering[0] = uiEvent.isHovering(X_POSITION, Y_POSITION, width, height);
+	hovering[1] = uiEvent.isHovering(X_POSITION, Y_POSITION + Y_OFFSET, width, height);
+	hovering[2] = uiEvent.isHovering(X_POSITION, Y_POSITION  + Y_OFFSET * 2, width, height);
+	hovering[3] = uiEvent.isHovering(X_POSITION, Y_POSITION  + Y_OFFSET * 3, width, height);
+	
+	if(hovering[0] == 1 && handler.getMouseManager().isLeftPressed()) {
+	    State.setState(handler.getGame().gameState);
+	}
+	
+	if(hovering[1] == 1 && handler.getMouseManager().isLeftPressed()) {
+	    State.setState(handler.getGame().tutorialState);
+	}
+	
+	if(hovering[2] == 1 && handler.getMouseManager().isLeftPressed()) {
+	    State.setState(handler.getGame().creditsState);
+	}
+	
+	if(hovering[3] == 1 && handler.getMouseManager().isLeftPressed()) {
+	    System.out.println("quit pressed");
+	}
     }
 
     @Override
     public void render(Graphics g) {
 	g.drawImage(Assets.background, 0, 0, null);
-	uiManager.render(g);
+	g.drawImage(Assets.btn_start[hovering[0]], X_POSITION, Y_POSITION, width, height, null);
+	g.drawImage(Assets.btn_tutorial[hovering[1]], X_POSITION, Y_POSITION + Y_OFFSET, width, height, null);
+	g.drawImage(Assets.btn_credits[hovering[2]], X_POSITION, Y_POSITION + Y_OFFSET * 2, width, height, null);
+	g.drawImage(Assets.btn_quit[hovering[3]], X_POSITION, Y_POSITION + Y_OFFSET * 3, width, height, null);
     }
 
 }
