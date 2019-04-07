@@ -5,7 +5,6 @@ import java.awt.Graphics;
 
 import com.stringhunt.Handler;
 import com.stringhunt.entities.creatures.Player;
-import com.stringhunt.gfx.Assets;
 
 public class GameState extends State {
     
