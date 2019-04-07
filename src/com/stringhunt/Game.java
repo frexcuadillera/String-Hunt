@@ -54,9 +54,7 @@ public class Game implements Runnable{
 	Assets.init();
 	
 	handler = new Handler(this);
-	
-	uiImageButton = new UIImageButton(handler);
-	
+		
 	//initialize states
 	gameState = new GameState(handler);
 	menuState = new MenuState(handler);
