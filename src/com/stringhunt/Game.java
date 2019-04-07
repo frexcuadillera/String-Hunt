@@ -24,7 +24,6 @@ public class Game implements Runnable{
     //States
     public State gameState;
     public State menuState;
-    public State descriptionState;
     public State tutorialState;
     public State creditsState;
     
@@ -58,7 +57,6 @@ public class Game implements Runnable{
 	//initialize states
 	gameState = new GameState(handler);
 	menuState = new MenuState(handler);
-	descriptionState = new DescriptionState(handler);
 	tutorialState = new TutorialState(handler);
 	creditsState = new CreditsState(handler);
 	
