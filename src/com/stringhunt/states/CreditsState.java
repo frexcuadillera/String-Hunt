@@ -16,14 +16,6 @@ public class CreditsState extends State {
 	super(handler);
 	uiManager = new UIManager(handler);
 	handler.getMouseManager().setUIManager(uiManager);
-	
-	uiManager.addObject(new UIImageButton(50, 50, 200, 50, Assets.btn_start, new ClickListener() {	    
-	    @Override
-	    public void onClick() {
-		State.setState(handler.getGame().menuState);
-	    }
-	    
-	}));
     }
 
     @Override
