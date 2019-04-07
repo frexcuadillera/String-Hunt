@@ -9,6 +9,7 @@ public class Assets {
     public static BufferedImage[] btn_tutorial; 
     public static BufferedImage[] btn_credits;
     public static BufferedImage[] btn_quit;
+    public static BufferedImage[] btn_back;
     
     public static SpriteSheet enemy_sheet;
     
@@ -20,7 +21,7 @@ public class Assets {
 	btn_tutorial = new BufferedImage[2];
 	btn_credits = new BufferedImage[2];
 	btn_quit = new BufferedImage[2];
-	
+	btn_back = new BufferedImage[2];
 	
 	//spritesheets
 	//enemy_sheet = new SpriteSheet(ImageLoader.loadImage("/test/test_sprite.png"));
@@ -40,6 +41,8 @@ public class Assets {
 	btn_credits[1] = ImageLoader.loadImage("/ui/button_credits_1.png");
 	btn_quit[0] = ImageLoader.loadImage("/ui/button_quit_0.png");
 	btn_quit[1] = ImageLoader.loadImage("/ui/button_quit_1.png");
+	btn_back[0] = ImageLoader.loadImage("/ui/button_back_0.png");
+	btn_back[1] = ImageLoader.loadImage("/ui/button_back_1.png");
 	
 	//player assets
 	
