@@ -5,8 +5,6 @@ import java.awt.Graphics;
 import com.stringhunt.Handler;
 import com.stringhunt.gfx.Assets;
 
-import com.stringhunt.ui.UIManager;
-
 public class CreditsState extends State {
     
     public CreditsState(Handler handler) {
