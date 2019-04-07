@@ -7,9 +7,11 @@ import com.stringhunt.display.Display;
 import com.stringhunt.gfx.Assets;
 import com.stringhunt.input.*;
 import com.stringhunt.states.*;
+import com.stringhunt.ui.*;
 
 public class Game implements Runnable{
 
+    
     private Display display;
     public int width, height;
     public String title;
@@ -30,8 +32,7 @@ public class Game implements Runnable{
     //input
     private KeyManager keyManager;
     private MouseManager mouseManager;
-     
-    
+       
     //game constructor
     public Game(String title, int width, int height) {
 	this.width = width;
@@ -53,6 +54,8 @@ public class Game implements Runnable{
 	Assets.init();
 	
 	handler = new Handler(this);
+	
+	uiImageButton = new UIImageButton(handler);
 	
 	//initialize states
 	gameState = new GameState(handler);
@@ -146,6 +149,8 @@ public class Game implements Runnable{
     public MouseManager getMouseManager() {
 	return mouseManager;
     }
+    
+    
     
     //threading----------------------------------
     
