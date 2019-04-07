@@ -16,20 +16,11 @@ public abstract class State {
 	return currentState;
     }
     
-    //CLASS
-    
-    //#14
-    //add
-    
     protected Handler handler;
-    
-    
-    
+ 
     public State(Handler handler) {
 	this.handler = handler;
     }
-       
-    //abstract methods
     
     public abstract void tick();
     
