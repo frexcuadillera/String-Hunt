@@ -27,6 +27,7 @@ public class Game implements Runnable{
     public State gameState;
     public State menuState;
     public State tutorialState;
+    public State descriptionState;
     public State creditsState;
     
     //input
@@ -58,6 +59,7 @@ public class Game implements Runnable{
 		gameState = new GameState(handler);
 		menuState = new MenuState(handler);
 		tutorialState = new TutorialState(handler);
+		descriptionState = new DescriptionState(handler);
 		creditsState = new CreditsState(handler);
 		
 		//set menu as state on startup
