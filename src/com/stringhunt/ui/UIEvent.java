@@ -23,6 +23,19 @@ public class UIEvent {
 	return hoverValue;
     }
     
+    public boolean isHoveringBoolean(int x, int y, int width, int height) {
+	boolean hovering = false;
+	
+	if(handler.getMouseManager().getMouseX() >= x && handler.getMouseManager().getMouseX() <= x + width
+		&& handler.getMouseManager().getMouseY() >= y && handler.getMouseManager().getMouseY() <= y + height) {
+	    hovering = true;
+	}else {
+	    hovering = false;
+	}
+	
+	return hovering;
+    }
+    
     public int isClicked(int x, int y, int width, int height) {
 	int clickValue = 0;
 	
