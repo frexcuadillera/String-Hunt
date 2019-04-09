@@ -2,6 +2,9 @@ package com.stringhunt.states;
 
 import java.awt.Graphics;
 
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
 import com.stringhunt.Handler;
 import com.stringhunt.gfx.Assets;
 import com.stringhunt.ui.UIEvent;
@@ -17,9 +20,13 @@ public class TutorialState extends State {
     
     private UIEvent uiEvent;
     
+    private JFrame f;
+    private JTextField textfield;
+    
     public TutorialState(Handler handler) {
 	super(handler);
 	uiEvent = new UIEvent(handler);
+	
     }
 
     @Override
