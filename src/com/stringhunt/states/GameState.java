@@ -4,7 +4,6 @@ import java.awt.Graphics;
 
 import com.stringhunt.Handler;
 import com.stringhunt.entities.panels.*;
-import com.stringhunt.gfx.Assets;
 
 public class GameState extends State {
     
@@ -21,7 +20,7 @@ public class GameState extends State {
 	//player = new Player(xpos,ypos, width,height);
 	//player = new Player(handler, 100, 100, 50, 50);
 	boardPanel = new BoardPanel(handler, 20,380,200,50);
-	letterPanel = new LetterPanel(handler, 50,180,700,100);
+	letterPanel = new LetterPanel(handler, 100,150,700,100);
 	scenePanel = new ScenePanel(handler, 100,100, 100, 100);
     }
 
