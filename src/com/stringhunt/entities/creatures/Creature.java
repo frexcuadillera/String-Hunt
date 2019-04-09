@@ -1,5 +1,6 @@
 package com.stringhunt.entities.creatures;
 
+import com.stringhunt.Handler;
 import com.stringhunt.entities.Entity;
 
 public abstract class Creature extends Entity {
@@ -14,8 +15,8 @@ public abstract class Creature extends Entity {
     //protected float speed;
     
     
-    public Creature(float x, float y, int width, int height) {
-	super(x, y, width, height);
+    public Creature(Handler handler, int x, int y, int width, int height) {
+	super(handler, x, y, width, height);
 		
 	//health = DEFAULT_HEALTH; //temp
 	//speed = DEFAULT_SPEED;
