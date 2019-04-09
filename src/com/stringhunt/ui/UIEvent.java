@@ -22,5 +22,21 @@ public class UIEvent {
 	
 	return hoverValue;
     }
+    
+    public int isClicked(int x, int y, int width, int height) {
+	int clickValue = 0;
+	
+	if(handler.getMouseManager().isLeftPressed()
+		&& handler.getMouseManager().getMouseX() >= x 
+		&& handler.getMouseManager().getMouseX() <= x + width
+		&& handler.getMouseManager().getMouseY() >= y 
+		&& handler.getMouseManager().getMouseY() <= y + height) {
+	    clickValue = 1;
+	}else {
+	    clickValue = 0;
+	}
+	
+	return clickValue;
+    }
 
 }
