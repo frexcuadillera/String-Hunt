@@ -37,7 +37,7 @@ public class CreditsState extends State {
     
     @Override
     public void render(Graphics g) {
-	g.drawImage(Assets.background, 0, 0, null);
+	g.drawImage(Assets.background, 0, 0, null);	
 	g.drawImage(Assets.btn_back[backHover], backX, backY, backWidth, backHeight, null);
     }
 
