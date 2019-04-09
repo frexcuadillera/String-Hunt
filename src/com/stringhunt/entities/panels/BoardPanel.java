@@ -42,6 +42,8 @@ public class BoardPanel extends Entity {
 	    for(int i = 0; i < 30; i++) {
 		LetterPanel.letterClicked[i] = false;
 	    }
+	    
+	    LetterPanel.letterOnScreenCount = 0;
 	}
 	
 	if(hovering[1] == 1 && handler.getMouseManager().isLeftPressed()) {
