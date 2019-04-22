@@ -48,17 +48,13 @@ public class LetterPanel extends Entity {
 	    for(int j = 0; j < 10; j++) {
 		if(!letterClicked[(i*10)+j] && uiEvent.isClicked(x + OFFSET * j, y + OFFSET * i, 50, 50) == 1) {
 		    letterClicked[(i*10)+j] = true;
+		    System.out.println("clicked");
+		    
 		}		
 	    }
 	    
 	}
-	
-	letterOnScreenCount = 0;
-	for(int i = 0; i < 30; i++) {
-	    if(letterClicked[i]){
-		letterOnScreenCount++;
-	    }
-	}
+
 	
 	for(int i = 0; i < 3; i++) {
 	    for(int j = 0; j < 10; j++) {
